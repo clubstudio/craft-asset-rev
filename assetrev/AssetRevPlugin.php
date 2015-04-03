@@ -42,7 +42,7 @@ class AssetRevPlugin extends BasePlugin
      * @return AssetRevTwigExtension
      * @throws \Exception
      */
-    public function hookAddTwigExtension()
+    public function addTwigExtension()
     {
         Craft::import('plugins.assetrev.twigextensions.AssetRevTwigExtension');
 
