@@ -24,9 +24,9 @@ class AssetRevTwigExtension extends Twig_Extension
      */
     public function getFunctions()
     {
-        return [
+        return array(
             'rev' => new Twig_Function_Method($this, 'getAssetRevisionFilename'),
-        ];
+        );
     }
 
     /**
