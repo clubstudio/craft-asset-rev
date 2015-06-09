@@ -3,9 +3,12 @@ namespace Craft;
 
 class AssetRevPlugin extends BasePlugin
 {
-	public function getName()
+    /**
+     * @return string
+     */
+    public function getName()
 	{
-		return 'Club - Asset Rev';
+		return 'Asset Rev';
 	}
 
 	/**
@@ -15,7 +18,7 @@ class AssetRevPlugin extends BasePlugin
 	 */
 	public function getVersion()
 	{
-		return '1.0.1';
+		return '2.0.0';
 	}
 
 	/**
@@ -39,6 +42,8 @@ class AssetRevPlugin extends BasePlugin
 	}
 
 	/**
+     * Add Twig Extension
+     *
 	 * @return AssetRevTwigExtension
 	 * @throws \Exception
 	 */
@@ -48,4 +53,29 @@ class AssetRevPlugin extends BasePlugin
 
 		return new AssetRevTwigExtension();
 	}
+
+    /**
+     * Define plugin settings
+     *
+     * @return array
+     */
+    protected function defineSettings()
+    {
+        return [
+            'manifestPath' => [AttributeType::String, 'required' => true],
+        ];
+    }
+
+    /**
+     * Get settings html
+     *
+     * @return string
+     */
+    public function getSettingsHtml()
+    {
+        return craft()->templates->render('assetrev/_settings', [
+            'settings' => $this->getSettings(),
+            'basePath' => CRAFT_BASE_PATH,
+        ]);
+    }
 }
