@@ -13,6 +13,8 @@ Copy the `assetrev` folder to your `craft/plugins` directory and activate it fro
 
 Once activated you can use the `rev()` function in your templates.
 
+**Note:** If the plugin can't find your manifest file, it will just return the file name passed into `rev()`. This is helpful during development as you aren't required to keep rebuilding the manifest file each time you update an asset.
+
 ## Example
 ```
 <link rel="stylesheet" href="{{ siteUrl }}{{ rev('css/main.css') }}">
