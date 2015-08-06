@@ -62,7 +62,7 @@ class AssetRevPlugin extends BasePlugin
 	protected function defineSettings()
 	{
 		return array(
-			'manifestPath' => [AttributeType::String, 'required' => true],
+			'manifestPath' => array(AttributeType::String, 'required' => true),
 		);
 	}
 
