@@ -19,6 +19,11 @@ Once activated you can use the `rev()` function in your templates.
 ```
 <link rel="stylesheet" href="{{ siteUrl }}{{ rev('css/main.css') }}">
 ```
+or
+
+```
+<link rel="stylesheet" href="{{ url(rev('css/main.css')) }}">
+```
 
 `css/main.css` will be replaced with the corresponding hashed filename as defined within your assets manifest .json file. 
 
