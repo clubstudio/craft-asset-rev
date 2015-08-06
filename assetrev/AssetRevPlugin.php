@@ -3,10 +3,10 @@ namespace Craft;
 
 class AssetRevPlugin extends BasePlugin
 {
-    /**
-     * @return string
-     */
-    public function getName()
+	/**
+	 * @return string
+	 */
+	public function getName()
 	{
 		return 'Asset Rev';
 	}
@@ -18,7 +18,7 @@ class AssetRevPlugin extends BasePlugin
 	 */
 	public function getVersion()
 	{
-		return '2.0.0';
+		return '2.0.1';
 	}
 
 	/**
@@ -42,8 +42,8 @@ class AssetRevPlugin extends BasePlugin
 	}
 
 	/**
-     * Add Twig Extension
-     *
+	 * Add Twig Extension
+	 *
 	 * @return AssetRevTwigExtension
 	 * @throws \Exception
 	 */
@@ -54,28 +54,28 @@ class AssetRevPlugin extends BasePlugin
 		return new AssetRevTwigExtension();
 	}
 
-    /**
-     * Define plugin settings
-     *
-     * @return array
-     */
-    protected function defineSettings()
-    {
-        return [
-            'manifestPath' => [AttributeType::String, 'required' => true],
-        ];
-    }
+	/**
+	 * Define plugin settings
+	 *
+	 * @return array
+	 */
+	protected function defineSettings()
+	{
+		return array(
+			'manifestPath' => [AttributeType::String, 'required' => true],
+		);
+	}
 
-    /**
-     * Get settings html
-     *
-     * @return string
-     */
-    public function getSettingsHtml()
-    {
-        return craft()->templates->render('assetrev/_settings', [
-            'settings' => $this->getSettings(),
-            'basePath' => CRAFT_BASE_PATH,
-        ]);
-    }
+	/**
+	 * Get settings html
+	 *
+	 * @return string
+	 */
+	public function getSettingsHtml()
+	{
+		return craft()->templates->render('assetrev/_settings', array(
+			'settings' => $this->getSettings(),
+			'basePath' => CRAFT_BASE_PATH,
+		));
+	}
 }
