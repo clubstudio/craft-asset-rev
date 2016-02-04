@@ -18,7 +18,7 @@ class AssetRevPlugin extends BasePlugin
 	 */
 	public function getVersion()
 	{
-		return '2.0.1';
+		return '3.0.0';
 	}
 
 	/**
@@ -42,6 +42,14 @@ class AssetRevPlugin extends BasePlugin
 	}
 
 	/**
+	 * @return string
+	 */
+	public function getDocumentationUrl()
+	{
+		return 'https://github.com/clubstudioltd/craft-asset-rev';
+	}
+
+	/**
 	 * Add Twig Extension
 	 *
 	 * @return AssetRevTwigExtension
@@ -52,30 +60,5 @@ class AssetRevPlugin extends BasePlugin
 		Craft::import('plugins.assetrev.twigextensions.AssetRevTwigExtension');
 
 		return new AssetRevTwigExtension();
-	}
-
-	/**
-	 * Define plugin settings
-	 *
-	 * @return array
-	 */
-	protected function defineSettings()
-	{
-		return array(
-			'manifestPath' => array(AttributeType::String, 'required' => true),
-		);
-	}
-
-	/**
-	 * Get settings html
-	 *
-	 * @return string
-	 */
-	public function getSettingsHtml()
-	{
-		return craft()->templates->render('assetrev/_settings', array(
-			'settings' => $this->getSettings(),
-			'basePath' => CRAFT_BASE_PATH,
-		));
 	}
 }
