@@ -9,18 +9,20 @@ In order to speed up the load time of your pages, you can set a far-future expir
 You *could* append a query string to the asset url (e.g. `css/main.css?v=24`), but you should read [here](http://www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/) to find out why that's not an ideal solution.
 
 ## Installation
-Copy the `assetrev` folder to your `craft/plugins` directory and activate it from the Craft plugin settings page. Once activated, you will need to specify the path to your asset manifest file within the plugin settings.
-
-Once activated you can use the `rev()` function in your templates.
-
-**Note:** If the plugin can't find your manifest file, it will just return the file name passed into `rev()`. This is helpful during development as you aren't required to keep rebuilding the manifest file each time you update an asset.
+Copy the `assetrev` folder to your `craft/plugins` directory and activate it from the Craft plugin settings page. Once activated, you may want to specify a custom path to your asset manifest file within the plugin configuration.
 
 ##Configuration
-The plugin comes with a `config.php` file that defines defaults for both `manifestPath` and `assetsBasePath`.
+The plugin comes with a `config.php` file that defines some sensible defaults.
 
-If you want to set your own values you should create a `assetrev.php` in your Craft config directory. The contents of this file will get merged with the plugin defaults, so you only need to specify values for the settings you want to override.
+If you want to set your own values you should create a `assetrev.php` file in your Craft config directory. The contents of this file will get merged with the plugin defaults, so you only need to specify values for the settings you want to override.
 
-Example:
+###Manifest Path
+`manifestPath` is relative to the base path of your Craft installation (whatever `CRAFT_BASE_PATH` is set to).
+
+###Assets Base Path
+`assetsBasePath` will be prepended to the output of `rev()`. You can use any environment variables that you may have set in your `general.php` config file here.
+
+###Example assetrev.php Config File
 
 ```
 <?php
@@ -31,23 +33,25 @@ return array(
 	),
 );
 ```
-###Manifest Path
-The manifest path is relative to the base path of your Craft installation (whatever `CRAFT_BASE_PATH` is set to).
 
-###Assets Base Path
-A path that will be prepended to the output of `rev()`. You can **use any environment variables** you may have set in your `general.php` config file.
+## Usage
+Once activated and configured you can use the `rev()` function in your templates.
 
-## Example
 ```
 <link rel="stylesheet" href="{{ rev('css/main.css') }}">
 ```
 
 `css/main.css` will be replaced with the corresponding hashed filename as defined within your assets manifest .json file.
 
-### Manifest file example
+If the contents of your manifest file are...
+
 ```
 {
     "css/main.css": "css/main.a9961d38.css",
     "js/main.js": "js/main.786087f7.js"
 }
 ```
+
+then `rev('css/main.css')` will expand to `css/main.a9961d38.css`.
+
+**Note:** If the plugin can't find your manifest file, it will just return the filename passed into `rev()`. This is helpful during development as you aren't required to keep rebuilding the manifest file each time you update an asset.
