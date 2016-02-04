@@ -15,23 +15,34 @@ Once activated you can use the `rev()` function in your templates.
 
 **Note:** If the plugin can't find your manifest file, it will just return the file name passed into `rev()`. This is helpful during development as you aren't required to keep rebuilding the manifest file each time you update an asset.
 
+##Configuration
+The plugin comes with a `config.php` file that defines defaults for both `manifestPath` and `assetsBasePath`.
+
+If you want to set your own values you should create a `assetrev.php` in your Craft config directory. The contents of this file will get merged with the plugin defaults, so you only need to specify values for the settings you want to override.
+
+Example:
+
+```
+<?php
+return array(
+	'*' => array(
+		'manifestPath' => 'resources/assets/assets.json',
+		'assetsBasePath' => '{baseUrl}',
+	),
+);
+```
+###Manifest Path
+The manifest path is relative to the base path of your Craft installation (whatever `CRAFT_BASE_PATH` is set to).
+
+###Assets Base Path
+A path that will be prepended to the output of `rev()`. You can **use any environment variables** you may have set in your `general.php` config file.
+
 ## Example
 ```
-<link rel="stylesheet" href="{{ siteUrl }}{{ rev('css/main.css') }}">
-```
-or
-
-```
-<link rel="stylesheet" href="{{ url(rev('css/main.css')) }}">
+<link rel="stylesheet" href="{{ rev('css/main.css') }}">
 ```
 
-`css/main.css` will be replaced with the corresponding hashed filename as defined within your assets manifest .json file. 
-
-If you'd like to pull the revised filename from a manifest file that is different to the one you specified within the plugin settings you can pass that through as a second argument.
-
-```
-<link rel="stylesheet" href="{{ siteUrl }}{{ rev('css/main.css', '../assets/') }}">
-```
+`css/main.css` will be replaced with the corresponding hashed filename as defined within your assets manifest .json file.
 
 ### Manifest file example
 ```
@@ -40,6 +51,3 @@ If you'd like to pull the revised filename from a manifest file that is differen
     "js/main.js": "js/main.786087f7.js"
 }
 ```
-
-## Roadmap
-- ~~Allow the configuration of the `assets.json` file path within the admin area~~
