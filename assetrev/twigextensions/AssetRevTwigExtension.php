@@ -7,6 +7,7 @@ use InvalidArgumentException;
 
 class AssetRevTwigExtension extends Twig_Extension
 {
+	static protected $settings;
 	static protected $manifest;
 
 	/**
@@ -32,31 +33,61 @@ class AssetRevTwigExtension extends Twig_Extension
 	}
 
 	/**
+	 * Builds an array of settings for the plugin
+	 *
+	 * @return array
+	 */
+	protected function settings()
+	{
+		if (is_null(self::$settings))
+		{
+			self::$settings = array(
+				'manifestPath' => craft()->config->get('manifestPath', 'assetrev'),
+				'assetsBasePath' => craft()->config->get('assetsBasePath', 'assetrev'),
+			);
+		}
+
+		return self::$settings;
+	}
+
+	/**
 	 * Get the filename of a asset
 	 *
-	 * @param      $file
-	 * @param null $manifestPath
-	 *
-	 * @return mixed
+	 * @param $file
+	 * @throws InvalidArgumentException
+	 * @return string
 	 */
-	public function getAssetFilename($file, $manifestPath = null)
+	public function getAssetFilename($file)
 	{
-		$settings = craft()->plugins->getPlugin('assetRev')->getSettings();
+		$settings = $this->settings();
 
 		if (empty($settings['manifestPath']))
 		{
-			throw new InvalidArgumentException("Manifest path not set in plugin settings.");
+			throw new InvalidArgumentException("Manifest path `manifestPath` not set in plugin configuration.");
 		}
 
-		$manifestPath = !is_null($manifestPath) ? $manifestPath : CRAFT_BASE_PATH.$settings['manifestPath'];
+		$manifestPath = CRAFT_BASE_PATH.$settings['manifestPath'];
 
 		// If the manifest file can't be found, we'll just return the original filename
 		if (!$this->manifestExists($manifestPath))
 		{
-			return $file;
+			return $this->buildAssetUrl($settings['assetsBasePath'], $file);
 		}
 
-		return $this->getAssetRevisionFilename($manifestPath, $file);
+		return $this->buildAssetUrl($settings['assetsBasePath'], $this->getAssetRevisionFilename($manifestPath, $file));
+	}
+
+	/**
+	 * Build an asset's URL
+	 *
+	 * @param  string $basePath Base path to assets as defined in the plugin settings
+	 * @param  string $file     Asset filename
+	 *
+	 * @return string           Path to the asset - environment variables having been replaced with their values.
+	 */
+	protected function buildAssetUrl($basePath, $file)
+	{
+		return craft()->config->parseEnvironmentString($basePath) . $file;
 	}
 
 	/**
@@ -68,7 +99,7 @@ class AssetRevTwigExtension extends Twig_Extension
 	 */
 	protected function manifestExists($manifest)
 	{
-		return file_exists($manifest);
+		return is_file($manifest);
 	}
 
 	/**
