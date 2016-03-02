@@ -60,13 +60,17 @@ class AssetRevTwigExtension extends Twig_Extension
 	public function getAssetFilename($file)
 	{
 		$settings = $this->settings();
+		$manifestPath = $settings['manifestPath'];
 
 		if (empty($settings['manifestPath']))
 		{
 			throw new InvalidArgumentException("Manifest path `manifestPath` not set in plugin configuration.");
 		}
 
-		$manifestPath = CRAFT_BASE_PATH.$settings['manifestPath'];
+		// Allow for a relative path
+		if (strpos($manifestPath, DIRECTORY_SEPARATOR) !== 0) {
+			$manifestPath = CRAFT_BASE_PATH.$manifestPath;
+		}
 
 		// If the manifest file can't be found, we'll just return the original filename
 		if (!$this->manifestExists($manifestPath))
