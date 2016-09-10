@@ -3,6 +3,11 @@ namespace Craft;
 
 class AssetRevPlugin extends BasePlugin
 {
+	public function init()
+	{
+		require_once __DIR__.'/vendor/autoload.php';
+	}
+
 	/**
 	 * @return string
 	 */
@@ -12,13 +17,21 @@ class AssetRevPlugin extends BasePlugin
 	}
 
 	/**
+	 * @return string
+	 */
+	public function getDescription()
+	{
+		return 'Cache bust you asset filenames';
+	}
+
+	/**
 	 * Returns the plugin’s version number.
 	 *
 	 * @return string The plugin’s version number.
 	 */
 	public function getVersion()
 	{
-		return '3.0.0';
+		return '4.0.0';
 	}
 
 	/**
