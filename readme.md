@@ -1,3 +1,5 @@
+![image](./media/logo.png)
+
 # CraftCMS Asset Rev (Cache Busting)
 A Twig extension for CraftCMS that allows you to swap out asset file names with their revved version, as defined in a JSON manifest file.
 
