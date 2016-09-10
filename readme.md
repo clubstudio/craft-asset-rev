@@ -57,7 +57,7 @@ If the contents of your manifest file are...
 ```
 {
     "css/main.css": "css/main.a9961d38.css",
-    "js/main.js": "js/main.786087f7.js"
+    "js/main.js": "js/main.786087f5.js"
 }
 ```
 
