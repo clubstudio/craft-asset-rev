@@ -1,0 +1,10 @@
+[
+    {
+        "version": "3.0.0",
+        "downloadUrl": "https://github.com/clubstudioltd/craft-asset-rev/archive/v3.0.0.zip",
+        "date": "2016-02-04T00:00:00-00:00",
+        "notes": [
+            "[Improved] All configuration is now file-based, which saves on multiple database calls each time rev() is used."
+        ]
+    }
+]

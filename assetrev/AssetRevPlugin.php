@@ -22,6 +22,16 @@ class AssetRevPlugin extends BasePlugin
 	}
 
 	/**
+	 * Returns the plugin’s release feed.
+	 *
+	 * @return JSON
+	 */
+	public function getReleaseFeedUrl()
+	{
+		return 'https://raw.githubusercontent.com/clubstudioltd/craft-asset-rev/master/releases.json';
+	}
+
+	/**
 	 * Returns the plugin developer’s name.
 	 *
 	 * @return string The plugin developer’s name.
