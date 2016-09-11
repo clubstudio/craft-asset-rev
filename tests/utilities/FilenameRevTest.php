@@ -97,11 +97,11 @@ class FilenameRevTest extends PHPUnit_Framework_TestCase
         $assetPath = stream_resolve_include_path($asset);
         $assetsPath = str_replace($asset, '', $assetPath);
 
-        $revver = new FilenameRev(null, null, '/home/vagrant/packages/craft-asset-rev/');
+        $revver = new FilenameRev(null, null, $assetsPath);
         $revver->setBasePath($assetsPath);
 
         $this->assertEquals(
-            '/home/vagrant/packages/craft-asset-rev/files/asset.css?' . filemtime($assetPath),
+            $assetsPath . $asset . '?' . filemtime($assetPath),
             $revver->rev($asset)
         );
     }
@@ -149,7 +149,7 @@ class FilenameRevTest extends PHPUnit_Framework_TestCase
         $assetPath = stream_resolve_include_path('files/asset.css');
         $assetsPath = str_replace('files/asset.css', '', $assetPath);
 
-        $revver = new FilenameRev('/home/vagrant/packages/craft-asset-rev/tests/files/manifest.json');
+        $revver = new FilenameRev($assetsPath . 'files/manifest.json');
         $revver->setBasePath($assetsPath);
 
         $this->assertEquals(
