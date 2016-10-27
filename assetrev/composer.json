@@ -1,0 +1,12 @@
+{
+    "name": "clubstudioltd/club-asset-rev",
+    "description": "Craft CMS plugin to aid cache-busting",
+    "keywords": ["craftcms", "cache-busting"],
+    "license": "MIT",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+          "AssetRev\\Utilities\\": "utilities/"
+        }
+    }
+}
