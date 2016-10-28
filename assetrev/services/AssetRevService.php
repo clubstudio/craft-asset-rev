@@ -18,7 +18,7 @@ class AssetRevService extends BaseApplicationComponent
         $revver = new FilenameRev(
             $this->parseEnvironmentString(craft()->config->get('manifestPath', 'assetrev')),
             $this->parseEnvironmentString(craft()->config->get('assetsBasePath', 'assetrev')),
-            $this->parseEnvironmentString(craft()->config->get('assetPrefix', 'assetrev'))
+            $this->parseEnvironmentString(craft()->config->get('assetUrlPrefix', 'assetrev'))
         );
 
         $revver->setBasePath(CRAFT_BASE_PATH);
