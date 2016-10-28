@@ -1,5 +1,22 @@
 [
     {
+        "version": "4.0.1",
+        "downloadUrl": "https://github.com/clubstudioltd/craft-asset-rev/archive/v4.0.1.zip",
+        "date": "2016-10-28T00:00:00-00:00",
+        "notes": [
+            "[Fixed] Fixed an incorrect reference to the Asset URL Prefix configuration"
+        ]
+    },
+    {
+        "version": "4.0.0",
+        "downloadUrl": "https://github.com/clubstudioltd/craft-asset-rev/archive/v4.0.0.zip",
+        "date": "2016-10-27T00:00:00-00:00",
+        "notes": [
+            "[Improved] Rewrite of core plugin code to allow fallback to query string on absence of a manifest file.",
+            "[Added] Unit Tests"
+        ]
+    },
+    {
         "version": "3.0.0",
         "downloadUrl": "https://github.com/clubstudioltd/craft-asset-rev/archive/v3.0.0.zip",
         "date": "2016-02-04T00:00:00-00:00",
