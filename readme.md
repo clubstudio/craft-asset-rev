@@ -38,7 +38,8 @@ If you want to set your own values you should create a `assetrev.php` file in yo
 return array(
 	'*' => array(
 		'manifestPath' => 'resources/assets/assets.json',
-		'assetsBasePath' => '{baseUrl}',
+		'assetsBasePath' => '../public/build/',
+		'assetUrlPrefix' => {baseUrl},
 	),
 );
 ```
