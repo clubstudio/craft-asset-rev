@@ -15,23 +15,23 @@ Using a manifest file is the recommended approach - you can read up on why using
 ## Installation
 Copy the `assetrev` folder to your `craft/plugins` directory and activate it from the Craft plugin settings page. Once activated, you may want to specify a custom path to your asset manifest file within the plugin configuration.
 
-##Configuration
+## Configuration
 The plugin comes with a `config.php` file that defines some sensible defaults.
 
 If you want to set your own values you should create a `assetrev.php` file in your Craft config directory. The contents of this file will get merged with the plugin defaults, so you only need to specify values for the settings you want to override.
 
-###Manifest Path
+### Manifest Path
 `manifestPath` is where Craft should look for your manifest file. Non-absolute paths will be relative to the base path of your Craft installation (whatever `CRAFT_BASE_PATH` is set to).
 
-###Assets Base Path
+### Assets Base Path
 `assetsBasePath` is the the base path to your assets. Again, this is relative to your craft base directory, unless you supply an absolute directory path.
 
-###Asset Url Prefix
+### Asset Url Prefix
 `assetUrlPrefix` will be prepended to the output of `rev()`.
 
 **Note:** You can use any environment variables that you may have set in your `general.php` config file in any of these configuration values.
 
-###Example assetrev.php Config File
+### Example assetrev.php Config File
 
 ```
 <?php
