@@ -1,7 +1,9 @@
 ![image](./media/logo.png)
 
-# CraftCMS Asset Rev (Cache Busting)
+# CraftCMS Asset Rev / Cache Busting (Craft 2.x)
 [![Build Status](https://travis-ci.org/clubstudioltd/craft-asset-rev.svg?branch=develop)](https://travis-ci.org/clubstudioltd/craft-asset-rev)
+
+**Looking for Craft 3 Support?** [Asset Rev for Craft 3](https://github.com/clubstudioltd/craft3-asset-rev)
 
 A Twig extension for CraftCMS that helps you cache-bust your assets by appending query string or swapping out asset file names with their revved version, as they are defined in a JSON manifest file.
 
