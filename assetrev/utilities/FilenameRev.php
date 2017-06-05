@@ -10,14 +10,16 @@ class FilenameRev
     protected $assetsBasePath;
     protected $assetUrlPrefix;
     protected $basePath;
+    protected $throwErrorOnMissingAsset;
 
     static protected $manifest;
 
-    public function __construct($manifestPath = null, $assetsBasePath = null, $assetUrlPrefix = null)
+    public function __construct($manifestPath = null, $assetsBasePath = null, $assetUrlPrefix = null, $throwErrorOnMissingAsset = true)
     {
         $this->manifestPath = $manifestPath;
         $this->assetsBasePath = $assetsBasePath;
         $this->assetUrlPrefix = $assetUrlPrefix;
+        $this->throwErrorOnMissingAsset = $throwErrorOnMissingAsset;
     }
 
     public function normalisePath($path)
@@ -71,12 +73,18 @@ class FilenameRev
     protected function appendQueryString($filename)
     {
         $file = $this->prependAssetBasePath($filename);
+        $fileExists = file_exists($file);
 
-        if (!file_exists($file)) {
+        if (!$fileExists && $this->throwErrorOnMissingAsset) {
             throw new InvalidArgumentException("Cannot append query string - the file `$file` does not exist.");
         }
 
-        $queryString = '?' . filemtime($file);
+        $queryString = '?';
+        if ($fileExists) {
+            $queryString = $queryString . filemtime($file);
+        } else {
+            $queryString = $queryString . $this->randomString();
+        }
 
         return $filename . $queryString;
     }
@@ -99,5 +107,11 @@ class FilenameRev
         }
 
         return $file;
+    }
+
+    private function randomString($length = 8) {
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $string = substr(str_shuffle($chars), 0, $length);
+        return $string;
     }
 }
