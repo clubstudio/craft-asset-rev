@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AssetRev\\Utilities\\' => array($baseDir . '/utilities'),
+    'AssetRev\\Exceptions\\' => array($baseDir . '/exceptions'),
 );

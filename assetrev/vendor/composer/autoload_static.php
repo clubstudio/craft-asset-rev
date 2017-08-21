@@ -10,6 +10,7 @@ class ComposerStaticInit82bd25fd5b6564a402c7d976ba5b366c
         'A' => 
         array (
             'AssetRev\\Utilities\\' => 19,
+            'AssetRev\\Exceptions\\' => 20,
         ),
     );
 
@@ -17,6 +18,10 @@ class ComposerStaticInit82bd25fd5b6564a402c7d976ba5b366c
         'AssetRev\\Utilities\\' => 
         array (
             0 => __DIR__ . '/../..' . '/utilities',
+        ),
+        'AssetRev\\Exceptions\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/exceptions',
         ),
     );
 

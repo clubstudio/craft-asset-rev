@@ -6,7 +6,8 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-          "AssetRev\\Utilities\\": "utilities/"
+          "AssetRev\\Utilities\\": "utilities/",
+          "AssetRev\\Exceptions\\": "exceptions/"
         }
     }
 }
