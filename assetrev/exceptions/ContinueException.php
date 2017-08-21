@@ -1,4 +1,5 @@
 <?php
+
 namespace AssetRev\Exceptions;
 
 use Exception;

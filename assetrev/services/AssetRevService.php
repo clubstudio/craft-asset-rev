@@ -1,4 +1,5 @@
 <?php
+
 namespace Craft;
 
 use InvalidArgumentException;
@@ -7,7 +8,7 @@ use AssetRev\Utilities\FilenameRev;
 class AssetRevService extends BaseApplicationComponent
 {
     /**
-     * Get the filename of a asset
+     * Get the filename of a asset.
      *
      * @param $file
      * @throws InvalidArgumentException
@@ -31,7 +32,7 @@ class AssetRevService extends BaseApplicationComponent
     }
 
     /**
-     * Build an asset's URL
+     * Build an asset's URL.
      *
      * @param  string $basePath Base path to assets as defined in the plugin settings
      * @param  string $file     Asset filename
