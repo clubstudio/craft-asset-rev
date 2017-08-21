@@ -1,4 +1,5 @@
 <?php
+
 namespace AssetRev\Utilities;
 
 abstract class Strategy implements StrategyContract

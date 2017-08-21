@@ -2,12 +2,10 @@
 
 namespace AssetRev\Utilities;
 
-use Craft\Craft;
 use Craft\LogLevel;
 use Craft\AssetRevPlugin;
 use Craft\ErrorException;
 use InvalidArgumentException;
-use AssetRev\Utilities\Strategy;
 use AssetRev\Exceptions\ContinueException;
 
 class FilenameRev
