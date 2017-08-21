@@ -13,6 +13,10 @@ class ManifestFileStrategy extends Strategy
     {
         $manifest = $this->getAbsolutePath($this->config['manifestPath']);
 
+        if (!is_file($manifest)) {
+            throw new ContinueException("Manifest file `$manifest` does not exist");
+        }
+
         if (is_null(self::$manifest)) {
             self::$manifest = json_decode(file_get_contents($manifest), true);
         }
