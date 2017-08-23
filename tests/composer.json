@@ -1,7 +1,8 @@
 {
     "autoload": {
         "psr-4": {
-          "AssetRev\\Utilities\\": "../assetrev/utilities/"
+          "AssetRev\\Utilities\\": "../assetrev/utilities/",
+          "AssetRev\\Exceptions\\": "../assetrev/exceptions/"
         }
     },
     "require-dev": {

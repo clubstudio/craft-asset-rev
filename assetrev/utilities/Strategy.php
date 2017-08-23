@@ -13,17 +13,17 @@ abstract class Strategy implements StrategyContract
         $this->basePath = $basePath;
     }
 
-    protected function getAbsolutePath($file)
+    protected function getAbsolutePath($path)
     {
-        if (strpos($file, DIRECTORY_SEPARATOR) === 0) {
-            return $file;
+        if (strpos($path, DIRECTORY_SEPARATOR) === 0) {
+            return $path;
         }
 
-        return $this->basePath . $file;
+        return $this->basePath . $path;
     }
 
     protected function normalisePath($path)
     {
-        return ltrim(rtrim($path, '/'), '/');
+        return rtrim($path, '/');
     }
 }
