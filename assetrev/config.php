@@ -19,4 +19,11 @@ return array(
 
     'assetUrlPrefix' => null,
 
+    // By default, throw an error if the file does not exist within the file
+    // system. This is to make sure no assets are missing on page load.
+    // This option can be set to false which will turn off exceptions and still
+    // include a random cache busting string.
+
+    'throwErrorOnMissingAsset' => true,
+
 );
