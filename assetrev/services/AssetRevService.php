@@ -1,4 +1,5 @@
 <?php
+
 namespace Craft;
 
 use InvalidArgumentException;
@@ -7,7 +8,7 @@ use AssetRev\Utilities\FilenameRev;
 class AssetRevService extends BaseApplicationComponent
 {
     /**
-     * Get the filename of a asset
+     * Get the filename of a asset.
      *
      * @param $file
      * @throws InvalidArgumentException
@@ -15,11 +16,15 @@ class AssetRevService extends BaseApplicationComponent
      */
     public function getAssetFilename($file)
     {
-        $revver = new FilenameRev(
-            $this->parseEnvironmentString(craft()->config->get('manifestPath', 'assetrev')),
-            $this->parseEnvironmentString(craft()->config->get('assetsBasePath', 'assetrev')),
-            $this->parseEnvironmentString(craft()->config->get('assetUrlPrefix', 'assetrev'))
-        );
+        $config = [];
+        $configKeys = ['pipeline', 'strategies', 'manifestPath', 'assetsBasePath', 'assetUrlPrefix'];
+        foreach ($configKeys as $configKey) {
+            $config[$configKey] = $this->parseEnvironmentString(
+                craft()->config->get($configKey, 'assetrev')
+            );
+        }
+
+        $revver = new FilenameRev($config);
 
         $revver->setBasePath(CRAFT_BASE_PATH);
 
@@ -27,7 +32,7 @@ class AssetRevService extends BaseApplicationComponent
     }
 
     /**
-     * Build an asset's URL
+     * Build an asset's URL.
      *
      * @param  string $basePath Base path to assets as defined in the plugin settings
      * @param  string $file     Asset filename

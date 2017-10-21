@@ -2,27 +2,20 @@
 
 namespace AssetRev\Utilities;
 
+use Craft\LogLevel;
+use Craft\AssetRevPlugin;
+use Craft\ErrorException;
 use InvalidArgumentException;
+use AssetRev\Exceptions\ContinueException;
 
 class FilenameRev
 {
-    protected $manifestPath;
-    protected $assetsBasePath;
-    protected $assetUrlPrefix;
+    protected $config;
     protected $basePath;
 
-    static protected $manifest;
-
-    public function __construct($manifestPath = null, $assetsBasePath = null, $assetUrlPrefix = null)
+    public function __construct($config)
     {
-        $this->manifestPath = $manifestPath;
-        $this->assetsBasePath = $assetsBasePath;
-        $this->assetUrlPrefix = $assetUrlPrefix;
-    }
-
-    public function normalisePath($path)
-    {
-        return ltrim(rtrim($path, '/'), '/');
+        $this->config = $config;
     }
 
     public function setBasePath($path)
@@ -30,72 +23,62 @@ class FilenameRev
         return $this->basePath = $path;
     }
 
-    public function getAbsolutePath($file)
-    {
-        if (strpos($file, DIRECTORY_SEPARATOR) === 0) {
-            return $file;
-        }
-
-        return $this->basePath . $file;
-    }
-
     public function rev($file)
     {
-        $manifest = $this->getAbsolutePath($this->manifestPath);
+        $strategies = array_filter(explode('|', $this->config['pipeline']));
 
-        $revvedFile = $this->manifestExists($manifest) ?
-            $this->revUsingManifest($manifest, $file) :
-            $this->appendQueryString($file);
-
-        return $this->prependAssetPrefix($revvedFile);
+        return $this->prependAssetPrefix(
+            $this->executeStrategies($file, $strategies, $this->basePath)
+        );
     }
 
-    protected function manifestExists($manifestPath)
+    protected function executeStrategies($file, array $strategies, $basePath)
     {
-        return is_file($manifestPath);
-    }
-
-    protected function revUsingManifest($manifest, $file)
-    {
-        if (is_null(self::$manifest)) {
-            self::$manifest = json_decode(file_get_contents($manifest), true);
+        if (empty($strategies)) {
+            throw new InvalidArgumentException('No revving strategies have been configured.');
         }
 
-        if (!isset(self::$manifest[$file])) {
-            throw new InvalidArgumentException("File `{$file}` not found in assets manifest");
+        foreach ($strategies as $strategy) {
+            if (!array_key_exists($strategy, $this->config['strategies'])) {
+                throw new InvalidArgumentException("The strategy `$strategy` has not been configured.");
+            }
+
+            try {
+                return $this->revFilenameUsingStrategy($file, $this->config['strategies'][$strategy], $basePath);
+            } catch (ContinueException $e) {
+                AssetRevPlugin::log($e->getMessage() . '. Continuing to next strategy...', LogLevel::Info);
+                continue;
+            }
         }
 
-        return self::$manifest[$file];
+        throw new ErrorException('None of the configured strategies `' . $this->config['pipeline'] . '` returned a value.');
     }
 
-    protected function appendQueryString($filename)
+    protected function revFilenameUsingStrategy($file, $strategy, $basePath)
     {
-        $file = $this->prependAssetBasePath($filename);
-
-        if (!file_exists($file)) {
-            throw new InvalidArgumentException("Cannot append query string - the file `$file` does not exist.");
+        if (is_callable($strategy)) {
+            return $strategy($file, $this->config, $basePath);
         }
 
-        $queryString = '?' . filemtime($file);
+        if (!class_exists($strategy)) {
+            throw new InvalidArgumentException('class does not exist');
+        }
 
-        return $filename . $queryString;
-    }
+        $class = new $strategy($this->config, $basePath);
 
-    protected function prependAssetBasePath($file)
-    {
-        if (!empty($this->assetsBasePath)) {
-            return $this->getAbsolutePath(
-                $this->normalisePath($this->assetsBasePath) . DIRECTORY_SEPARATOR . $file
+        if (!$class instanceof Strategy) {
+            throw new InvalidArgumentException(
+                "Strategy class `$strategy` must be an instance of `AssetRev\Utilities\Strategy`"
             );
         }
 
-        return $file;
+        return $class->rev($file);
     }
 
     protected function prependAssetPrefix($file)
     {
-        if (!empty($this->assetUrlPrefix)) {
-            return $this->assetUrlPrefix . $file;
+        if (!empty($this->config['assetUrlPrefix'])) {
+            return $this->config['assetUrlPrefix'] . $file;
         }
 
         return $file;
