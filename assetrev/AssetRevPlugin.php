@@ -22,7 +22,7 @@ class AssetRevPlugin extends BasePlugin
      */
     public function getDescription()
     {
-        return 'Cache bust you asset filenames';
+        return 'Cache bust your asset filenames';
     }
 
     /**
