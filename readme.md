@@ -39,11 +39,12 @@ Returns the original filename, without modification. This is useful if all other
 Pipelines allow you to attempt multiple cache-busting strategies in sequence. If one strategy fails, the plugin can proceed to try and cache-bust the asset filename using the next strategy in the pipeline.
 
 The default pipeline is `manifest|querystring|passthrough` and will:
-    1. Attempt to use the `ManifestFileStrategy`. If it can’t, because the manifest file doesn’t exist, it will throw a `ContinueException` that defers cache-busting to the next strategy in the pipeline…
-    2. Attempt to use the `QueryStringStrategy`. If it can’t, because it can’t find the asset file, it will throw another `ContinueException` that defers cache-busting to the final default strategy…
-    3. Returns the original filename using the closure-based pass-through strategy.
 
-*Need to provide your own cache-busting logic?* Simply create your own implementation of the Strategy class or define a Closure in the configuration file.
+1. Attempt to use the `ManifestFileStrategy`. If it can’t, because the manifest file doesn’t exist, it will throw a `ContinueException` that defers cache-busting to the next strategy in the pipeline…
+2. Attempt to use the `QueryStringStrategy`. If it can’t, because it can’t find the asset file, it will throw another `ContinueException` that defers cache-busting to the final default strategy…
+3. Returns the original filename using the closure-based pass-through strategy.
+
+**Need to provide your own cache-busting logic?** Simply create your own implementation of the Strategy class or define a Closure in the configuration file.
 
 ## Installation
 Copy the `assetrev` folder to your `craft/plugins` directory and activate it from the Craft plugin settings page. Once activated, you may want to specify a custom path to your asset manifest file within the plugin configuration.
@@ -70,7 +71,7 @@ If you want to set your own values you should create a `assetrev.php` file in yo
 
 **Note:** You can use any environment variables that you may have set in your `general.php` config file in any of these configuration values.
 
-## An Example `assetrev.php` Config File
+## An Example Config File
 ```
 <?php
 return array(
