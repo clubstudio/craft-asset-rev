@@ -1,6 +1,7 @@
 <?php
 
-use AssetRev\Utilities\FilenameRev;
+use Club\AssetRev\models\Settings;
+use Club\AssetRev\Utilities\FilenameRev;
 
 class FilenameRevTest extends PHPUnit_Framework_TestCase
 {
@@ -9,7 +10,7 @@ class FilenameRevTest extends PHPUnit_Framework_TestCase
      */
     public function it_is_instantiable_with_configuration()
     {
-        $config = ['foo' => 'bar'];
+        $config = new Settings(['manifestPath' => 'bar']);
         $class = new FilenameRev($config);
 
         $this->assertAttributeEquals($config, 'config', $class);

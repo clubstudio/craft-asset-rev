@@ -7,6 +7,11 @@
   "require": {
     "craftcms/cms": "^3.0.0-beta.29"
   },
+  "require-dev": {
+      "mockery/mockery": "0.9.*",
+      "phpunit/phpunit": "~5.0",
+      "phpunit/php-token-stream": "<2"
+  },
   "autoload": {
     "psr-4": {
       "Club\\AssetRev\\": "src/"
