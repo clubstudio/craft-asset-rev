@@ -12,7 +12,7 @@ class ManifestFileStrategy extends Strategy
     public function rev($filename)
     {
         $manifest = $this->getAbsolutePath($this->config['manifestPath']);
-        return;
+
         if (!is_file($manifest)) {
             throw new ContinueException("Manifest file `$manifest` does not exist");
         }
