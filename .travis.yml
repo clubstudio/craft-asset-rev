@@ -4,15 +4,7 @@ php:
   - 7.0
   - 7.1
 
-env:
-  global:
-    - setup=basic
-
 sudo: false
-
-services:
-  - memcached
-  - redis-server
 
 before_install:
   - if [[ $TRAVIS_PHP_VERSION != 7.1 ]] ; then phpenv config-rm xdebug.ini; fi
@@ -22,8 +14,3 @@ install:
   - travis_retry composer install --no-interaction --prefer-dist --no-suggest
 
 script: vendor/bin/phpunit
-
-matrix:
-  allow_failures:
-    - php: 7.1
-  fast_finish: true
