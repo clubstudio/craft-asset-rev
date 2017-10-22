@@ -1,5 +1,13 @@
 [
     {
+        "version": "5.0.0",
+        "downloadUrl": "https://github.com/clubstudioltd/craft-asset-rev/archive/v5.0.0.zip",
+        "date": "2017-10-21T00:00:00-00:00",
+        "notes": [
+            "[Added] Configurable cache-busting strategies"
+        ]
+    },
+    {
         "version": "4.0.1",
         "downloadUrl": "https://github.com/clubstudioltd/craft-asset-rev/archive/v4.0.1.zip",
         "date": "2016-10-28T00:00:00-00:00",
