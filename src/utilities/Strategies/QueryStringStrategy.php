@@ -1,9 +1,9 @@
 <?php
 
-namespace AssetRev\Utilities\Strategies;
+namespace Club\AssetRev\Utilities\Strategies;
 
-use AssetRev\Utilities\Strategy;
-use AssetRev\Exceptions\ContinueException;
+use Club\AssetRev\Utilities\Strategy;
+use Club\AssetRev\Exceptions\ContinueException;
 
 class QueryStringStrategy extends Strategy
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace AssetRev\Utilities\Strategies;
+namespace Club\AssetRev\Utilities\Strategies;
 
-use AssetRev\Utilities\Strategy;
-use AssetRev\Exceptions\ContinueException;
+use Club\AssetRev\Utilities\Strategy;
+use Club\AssetRev\Exceptions\ContinueException;
 
 class ManifestFileStrategy extends Strategy
 {
@@ -12,7 +12,7 @@ class ManifestFileStrategy extends Strategy
     public function rev($filename)
     {
         $manifest = $this->getAbsolutePath($this->config['manifestPath']);
-
+        return;
         if (!is_file($manifest)) {
             throw new ContinueException("Manifest file `$manifest` does not exist");
         }

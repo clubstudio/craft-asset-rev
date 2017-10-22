@@ -1,11 +1,12 @@
 <?php
 
-namespace Craft;
+namespace Club\AssetRev\services;
 
-use InvalidArgumentException;
-use AssetRev\Utilities\FilenameRev;
+use Yii;
+use craft\base\Model;
+use Club\AssetRev\utilities\FilenameRev;
 
-class AssetRevService extends BaseApplicationComponent
+class AssetRev extends \craft\base\Component
 {
     /**
      * Get the filename of a asset.
@@ -16,19 +17,29 @@ class AssetRevService extends BaseApplicationComponent
      */
     public function getAssetFilename($file)
     {
-        $config = [];
-        $configKeys = ['pipeline', 'strategies', 'manifestPath', 'assetsBasePath', 'assetUrlPrefix'];
-        foreach ($configKeys as $configKey) {
-            $config[$configKey] = $this->parseEnvironmentString(
-                craft()->config->get($configKey, 'assetrev')
-            );
-        }
+        $settings = $this->parseAliases(\Club\AssetRev\AssetRev::getInstance()->settings);
 
-        $revver = new FilenameRev($config);
-
+        $revver = new FilenameRev($settings);
         $revver->setBasePath(CRAFT_BASE_PATH);
 
         return $revver->rev($file);
+    }
+
+    /**
+     * Replace Yii aliases.
+     *
+     * @param  Model  $settings
+     * @return Model
+     */
+    protected function parseAliases(Model $settings)
+    {
+        $aliasables = ['manifestPath', 'assetsBasePath', 'assetUrlPrefix'];
+
+        foreach ($aliasables as $aliasable) {
+            $settings->{$aliasable} = Yii::getAlias($settings->{$aliasable});
+        }
+
+        return $settings;
     }
 
     /**

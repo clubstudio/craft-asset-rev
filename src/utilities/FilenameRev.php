@@ -1,12 +1,12 @@
 <?php
 
-namespace AssetRev\Utilities;
+namespace Club\AssetRev\Utilities;
 
-use Craft\LogLevel;
-use Craft\AssetRevPlugin;
-use Craft\ErrorException;
+use Craft;
+use ErrorException;
+use Club\AssetRev\AssetRev;
 use InvalidArgumentException;
-use AssetRev\Exceptions\ContinueException;
+use Club\AssetRev\Exceptions\ContinueException;
 
 class FilenameRev
 {
@@ -25,7 +25,7 @@ class FilenameRev
 
     public function rev($file)
     {
-        $strategies = array_filter(explode('|', $this->config['pipeline']));
+        $strategies = array_filter(explode('|', $this->config->pipeline));
 
         return $this->prependAssetPrefix(
             $this->executeStrategies($file, $strategies, $this->basePath)
@@ -39,19 +39,19 @@ class FilenameRev
         }
 
         foreach ($strategies as $strategy) {
-            if (!array_key_exists($strategy, $this->config['strategies'])) {
+            if (!array_key_exists($strategy, $this->config->strategies)) {
                 throw new InvalidArgumentException("The strategy `$strategy` has not been configured.");
             }
 
             try {
-                return $this->revFilenameUsingStrategy($file, $this->config['strategies'][$strategy], $basePath);
+                return $this->revFilenameUsingStrategy($file, $this->config->strategies[$strategy], $basePath);
             } catch (ContinueException $e) {
-                AssetRevPlugin::log($e->getMessage() . '. Continuing to next strategy...', LogLevel::Info);
+                Craft::info($e->getMessage() . '. Continuing to next strategy...');
                 continue;
             }
         }
 
-        throw new ErrorException('None of the configured strategies `' . $this->config['pipeline'] . '` returned a value.');
+        throw new ErrorException('None of the configured strategies `' . $this->config->pipeline . '` returned a value.');
     }
 
     protected function revFilenameUsingStrategy($file, $strategy, $basePath)
@@ -77,8 +77,8 @@ class FilenameRev
 
     protected function prependAssetPrefix($file)
     {
-        if (!empty($this->config['assetUrlPrefix'])) {
-            return $this->config['assetUrlPrefix'] . $file;
+        if (!empty($this->config->assetUrlPrefix)) {
+            return $this->config->assetUrlPrefix . $file;
         }
 
         return $file;

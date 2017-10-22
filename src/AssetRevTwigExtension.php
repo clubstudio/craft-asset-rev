@@ -1,9 +1,9 @@
 <?php
 
-namespace Craft;
+namespace Club\AssetRev;
 
 use Twig_Extension;
-use Twig_Function_Method;
+use Twig_SimpleFunction;
 
 class AssetRevTwigExtension extends Twig_Extension
 {
@@ -25,19 +25,20 @@ class AssetRevTwigExtension extends Twig_Extension
     public function getFunctions()
     {
         return [
-            'rev' => new Twig_Function_Method($this, 'getAssetFilename'),
+            new Twig_SimpleFunction('rev', [$this, 'getAssetFilename']),
         ];
     }
 
     /**
      * Get the filename of a asset.
      *
-     * @param $file
-     * @throws InvalidArgumentException
+     * @param      $file
+     * @param bool $strict      Throw an exception if the file does not exist in the manifest file.
+     *
      * @return string
      */
     public function getAssetFilename($file)
     {
-        return craft()->assetRev->getAssetFilename($file);
+        return AssetRev::getInstance()->assetRev->getAssetFilename($file);
     }
 }

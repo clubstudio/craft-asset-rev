@@ -1,13 +1,15 @@
 <?php
 
-namespace AssetRev\Utilities;
+namespace Club\AssetRev\Utilities;
+
+use craft\base\Model;
 
 abstract class Strategy implements StrategyContract
 {
     protected $config = [];
     protected $basePath;
 
-    public function __construct(array $config = [], $basePath = null)
+    public function __construct(Model $config, $basePath = null)
     {
         $this->config = $config;
         $this->basePath = $basePath;
