@@ -1,6 +1,6 @@
 <?php
 
-namespace Club\AssetRev\Exceptions;
+namespace Club\AssetRev\exceptions;
 
 use Exception;
 

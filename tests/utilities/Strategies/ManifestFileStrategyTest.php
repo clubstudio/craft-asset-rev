@@ -1,8 +1,8 @@
 <?php
 
 use Club\AssetRev\models\Settings;
-use Club\AssetRev\Exceptions\ContinueException;
-use Club\AssetRev\Utilities\Strategies\ManifestFileStrategy;
+use Club\AssetRev\exceptions\ContinueException;
+use Club\AssetRev\utilities\Strategies\ManifestFileStrategy;
 
 class ManifestFileStrategyTest extends PHPUnit_Framework_TestCase
 {
