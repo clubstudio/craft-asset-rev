@@ -121,7 +121,7 @@ class QueryStringStrategy extends Strategy
 ```
 
 ### Example Closure
-Your method with have access to the asset filename passed through and the plugin configuration array.
+Your method will have access to the asset filename and the plugin configuration array.
 
 ```
 function ($filename, $config) {
