@@ -1,7 +1,7 @@
 ![image](./media/logo.png)
 
 # CraftCMS Asset Rev / Cache Busting (Craft 2.x)
-[![Build Status](https://travis-ci.org/clubstudioltd/craft-asset-rev.svg?branch=develop)](https://travis-ci.org/clubstudioltd/craft-asset-rev)
+[![Build Status](https://travis-ci.org/clubstudioltd/craft-asset-rev.svg?branch=v5)](https://travis-ci.org/clubstudioltd/craft-asset-rev)
 
 **Looking for Craft 3 Support?** [Asset Rev for Craft 3](https://github.com/clubstudioltd/craft3-asset-rev)
 
