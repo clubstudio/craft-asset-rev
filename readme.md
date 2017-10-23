@@ -77,8 +77,8 @@ If you want to set your own values you should create a `assetrev.php` file in yo
 return array(
     '*' => array(
         'strategies' => [
-            'manifest' => AssetRev\Utilities\Strategies\ManifestFileStrategy::class,
-            'querystring' => AssetRev\Utilities\Strategies\QueryStringStrategy::class,
+            'manifest' => \Club\AssetRev\utilities\Strategies\ManifestFileStrategy::class,
+            'querystring' => Club\AssetRev\utilities\Strategies\QueryStringStrategy::class,
             'passthrough' => function ($filename, $config) {
                 return $filename;
             },
@@ -107,8 +107,8 @@ Need to provide your own cache-busting logic? Create your own Strategy class or 
 
 namespace Your\Custom\Namespace;
 
-use AssetRev\Utilities\Strategy;
-use AssetRev\Exceptions\ContinueException;
+use Club\AssetRev\utilities\Strategy;
+use Club\AssetRev\exceptions\ContinueException;
 
 class QueryStringStrategy extends Strategy
 {
