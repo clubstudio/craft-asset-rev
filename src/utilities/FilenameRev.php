@@ -1,12 +1,12 @@
 <?php
 
-namespace Club\AssetRev\utilities;
+namespace club\assetrev\utilities;
 
 use Craft;
 use ErrorException;
-use Club\AssetRev\AssetRev;
+use club\assetrev\AssetRev;
 use InvalidArgumentException;
-use Club\AssetRev\exceptions\ContinueException;
+use club\assetrev\exceptions\ContinueException;
 
 class FilenameRev
 {

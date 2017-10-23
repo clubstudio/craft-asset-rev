@@ -13,8 +13,8 @@ return [
     // custom closure. The defaults should cater to most requirements.
 
     'strategies' => [
-        'manifest' => \Club\AssetRev\utilities\Strategies\ManifestFileStrategy::class,
-        'querystring' => \Club\AssetRev\utilities\Strategies\QueryStringStrategy::class,
+        'manifest' => \club\assetrev\utilities\strategies\ManifestFileStrategy::class,
+        'querystring' => \club\assetrev\utilities\strategies\QueryStringStrategy::class,
         'passthrough' => function ($filename, $config) {
             return $filename;
         },

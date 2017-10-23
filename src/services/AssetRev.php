@@ -1,12 +1,14 @@
 <?php
 
-namespace Club\AssetRev\services;
+namespace club\assetrev\services;
 
 use Yii;
 use craft\base\Model;
-use Club\AssetRev\utilities\FilenameRev;
+use craft\base\Component;
+use club\assetrev\AssetRev as Plugin;
+use club\assetrev\utilities\FilenameRev;
 
-class AssetRev extends \craft\base\Component
+class AssetRev extends Component
 {
     /**
      * Get the filename of a asset.
@@ -17,7 +19,7 @@ class AssetRev extends \craft\base\Component
      */
     public function getAssetFilename($file)
     {
-        $settings = $this->parseAliases(\Club\AssetRev\AssetRev::getInstance()->settings);
+        $settings = $this->parseAliases(Plugin::getInstance()->settings);
 
         $revver = new FilenameRev($settings);
         $revver->setBasePath(CRAFT_BASE_PATH);

@@ -1,9 +1,9 @@
 <?php
 
-namespace Club\AssetRev\utilities\Strategies;
+namespace club\assetrev\utilities\strategies;
 
-use Club\AssetRev\utilities\Strategy;
-use Club\AssetRev\exceptions\ContinueException;
+use club\assetrev\utilities\Strategy;
+use club\assetrev\exceptions\ContinueException;
 
 class ManifestFileStrategy extends Strategy
 {

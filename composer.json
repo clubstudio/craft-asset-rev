@@ -14,7 +14,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Club\\AssetRev\\": "src/"
+      "club\\assetrev\\": "src/"
     }
   },
   "extra": {
@@ -27,6 +27,6 @@
     "downloadUrl": "https://github.com/clubstudioltd/craft-asset-rev/archive/v6.zip",
     "developer": "Club Studio Ltd",
     "developerUrl": "https://clubstudio.co.uk",
-    "class": "Club\\AssetRev\\AssetRev"
+    "class": "club\\assetrev\\AssetRev"
   }
 }

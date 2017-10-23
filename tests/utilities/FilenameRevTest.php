@@ -1,7 +1,7 @@
 <?php
 
-use Club\AssetRev\models\Settings;
-use Club\AssetRev\utilities\FilenameRev;
+use club\assetrev\models\Settings;
+use club\assetrev\utilities\FilenameRev;
 
 class FilenameRevTest extends PHPUnit_Framework_TestCase
 {

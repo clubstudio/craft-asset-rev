@@ -1,6 +1,6 @@
 <?php
 
-namespace Club\AssetRev;
+namespace club\assetrev;
 
 use Twig_Extension;
 use Twig_SimpleFunction;
@@ -32,8 +32,7 @@ class AssetRevTwigExtension extends Twig_Extension
     /**
      * Get the filename of a asset.
      *
-     * @param      $file
-     * @param bool $strict      Throw an exception if the file does not exist in the manifest file.
+     * @param  string $file
      *
      * @return string
      */

@@ -1,6 +1,6 @@
 <?php
 
-namespace Club\AssetRev\utilities;
+namespace club\assetrev\utilities;
 
 use craft\base\Model;
 

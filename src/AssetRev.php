@@ -1,9 +1,11 @@
 <?php
 
-namespace Club\AssetRev;
+namespace club\assetrev;
 
 use Craft;
 use craft\base\Plugin;
+use club\assetrev\models\Settings;
+use club\assetrev\services\AssetRev as Service;
 
 class AssetRev extends Plugin
 {
@@ -12,7 +14,7 @@ class AssetRev extends Plugin
         parent::init();
 
         $this->setComponents([
-            'assetRev' => \Club\AssetRev\services\AssetRev::class,
+            'assetRev' => Service::class,
         ]);
 
         Craft::$app->view->twig->addExtension(new AssetRevTwigExtension);
@@ -20,6 +22,6 @@ class AssetRev extends Plugin
 
     protected function createSettingsModel()
     {
-        return new \Club\AssetRev\models\Settings();
+        return new Settings();
     }
 }

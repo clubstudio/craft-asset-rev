@@ -1,8 +1,8 @@
 <?php
 
-use Club\AssetRev\models\Settings;
-use Club\AssetRev\exceptions\ContinueException;
-use Club\AssetRev\utilities\Strategies\QueryStringStrategy;
+use club\assetrev\models\Settings;
+use club\assetrev\exceptions\ContinueException;
+use club\assetrev\utilities\strategies\QueryStringStrategy;
 
 class QueryStringStrategyTest extends PHPUnit_Framework_TestCase
 {
