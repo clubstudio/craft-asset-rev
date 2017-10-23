@@ -78,7 +78,7 @@ return array(
     '*' => array(
         'strategies' => [
             'manifest' => \Club\AssetRev\utilities\Strategies\ManifestFileStrategy::class,
-            'querystring' => Club\AssetRev\utilities\Strategies\QueryStringStrategy::class,
+            'querystring' => \Club\AssetRev\utilities\Strategies\QueryStringStrategy::class,
             'passthrough' => function ($filename, $config) {
                 return $filename;
             },
