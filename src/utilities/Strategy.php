@@ -21,7 +21,7 @@ abstract class Strategy implements StrategyContract
             return $path;
         }
 
-        return $this->basePath . $path;
+        return $this->basePath . DIRECTORY_SEPARATOR . $path;
     }
 
     protected function normalisePath($path)
