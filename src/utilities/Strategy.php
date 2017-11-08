@@ -17,7 +17,7 @@ abstract class Strategy implements StrategyContract
 
     protected function getAbsolutePath($path)
     {
-        if (strpos($path, DIRECTORY_SEPARATOR) === 0) {
+        if (strpos($path, DIRECTORY_SEPARATOR) === 0 or empty($this->basePath)) {
             return $path;
         }
 
