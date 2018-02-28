@@ -51,7 +51,7 @@ The default pipeline is `manifest|querystring|passthrough` and will:
 **Need to provide your own cache-busting logic?** Simply create your own implementation of the Strategy class or define a Closure in the configuration file.
 
 ## Installation
-Copy the `assetrev` folder to your `craft/plugins` directory and activate it from the Craft plugin settings page. Once activated, you may want to specify a custom path to your asset manifest file within the plugin configuration.
+Install via the Plugin Store within your Craft 3 installation or using Composer: `composer require clubstudioltd/craft-asset-rev`
 
 ## Configuration
 The plugin comes with a `config.php` file that defines some sensible defaults.
