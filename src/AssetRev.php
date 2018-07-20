@@ -17,7 +17,7 @@ class AssetRev extends Plugin
             'assetRev' => Service::class,
         ]);
 
-        Craft::$app->view->twig->addExtension(new AssetRevTwigExtension);
+        Craft::$app->view->registerTwigExtension(new AssetRevTwigExtension);
     }
 
     protected function createSettingsModel()
