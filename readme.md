@@ -1,4 +1,4 @@
-![image](./media/logo.png)
+<img src="./src/icon.svg" width="64">
 
 # CraftCMS Asset Rev / Cache Busting (Craft 3.x)
 [![Build Status](https://travis-ci.org/clubstudioltd/craft-asset-rev.svg?branch=v6)](https://travis-ci.org/clubstudioltd/craft-asset-rev)
