@@ -73,7 +73,7 @@ If you want to set your own values you should create a `assetrev.php` file in yo
 ### Asset Url Prefix
 `assetUrlPrefix` will be prepended to the output of `rev()`.
 
-**Note:** You can use any environment variables that you may have set in your `general.php` config file in any of these configuration values.
+**Note:** You can use Yii aliases in your configuration values.
 
 ## An Example Config File
 ```
@@ -90,7 +90,7 @@ return array(
         'pipeline' => 'manifest|querystring|passthrough',
         'manifestPath' => 'resources/assets/assets.json',
         'assetsBasePath' => '../public/build/',
-        'assetUrlPrefix' => '{baseUrl}',
+        'assetUrlPrefix' => '@web/assets',
     ),
 );
 ```
