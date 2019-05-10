@@ -20,7 +20,7 @@ Using a manifest file is the recommended approach - you can read up on why using
 This plugin allows you to configure multiple cache-busting strategies for your asset filenames.  The plugin comes with three strategies out of the box:
 
 ### Manifest File
-`css/main.css` will be replaced with the corresponding hashed filename as defined within your assets manifest .json file.
+`css/main.css` will be replaced with the corresponding hashed filename as defined within your assets manifest `.json` file.
 
 If the contents of your manifest file are...
 
@@ -32,6 +32,8 @@ If the contents of your manifest file are...
 ```
 
 then `rev('css/main.css')` will expand to `css/main.a9961d38.css`.
+
+**Please note:** This plugin __does not__ create manifest files; instead they should be generated during your build process using [Gulp Rev](https://github.com/sindresorhus/gulp-rev), [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) or another comparable tool.
 
 ### Query String
 Append a query string to your file, based on the time it was last modified. For example: `rev('css/main.css')` will expand to something like `css/main.css?1473534554`.
