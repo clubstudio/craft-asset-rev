@@ -1,6 +1,6 @@
 {
   "name": "clubstudioltd/craft-asset-rev",
-  "description": "A plugin to aid cache-busting in Craft 3",
+  "description": "A plugin to aid cache-busting in Craft 4",
   "version": "7.0.0",
   "type": "craft-plugin",
   "license": "MIT",
