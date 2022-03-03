@@ -7,7 +7,7 @@ use club\assetrev\exceptions\ContinueException;
 
 class QueryStringStrategy extends Strategy
 {
-    public function rev($filename)
+    public function rev($filename): string
     {
         $file = $this->prependAssetBasePath($filename);
 
@@ -20,7 +20,7 @@ class QueryStringStrategy extends Strategy
         return $filename . $queryString;
     }
 
-    protected function prependAssetBasePath($file)
+    protected function prependAssetBasePath($file): string
     {
         if (!empty($this->config['assetsBasePath'])) {
             return $this->getAbsolutePath(

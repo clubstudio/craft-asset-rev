@@ -2,17 +2,18 @@
 
 namespace club\assetrev;
 
-use Twig_Extension;
-use Twig_SimpleFunction;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
-class AssetRevTwigExtension extends Twig_Extension
+
+class AssetRevTwigExtension extends AbstractExtension
 {
     /**
      * Returns the name of the extension.
      *
      * @return string The extension name
      */
-    public function getName()
+    public function getName(): string
     {
         return 'Club Asset Rev';
     }
@@ -22,21 +23,21 @@ class AssetRevTwigExtension extends Twig_Extension
      *
      * @return array
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
-            new Twig_SimpleFunction('rev', [$this, 'getAssetFilename']),
+            new TwigFunction('rev', [$this, 'getAssetFilename']),
         ];
     }
 
     /**
-     * Get the filename of a asset.
+     * Get the filename of an asset.
      *
-     * @param  string $file
+     * @param string $file
      *
      * @return string
      */
-    public function getAssetFilename($file)
+    public function getAssetFilename(string $file): string
     {
         return AssetRev::getInstance()->assetRev->getAssetFilename($file);
     }

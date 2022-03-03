@@ -6,8 +6,8 @@ use craft\base\Model;
 
 abstract class Strategy implements StrategyContract
 {
-    protected $config = [];
-    protected $basePath;
+    protected array|Model $config = [];
+    protected ?string $basePath;
 
     public function __construct(Model $config, $basePath = null)
     {
@@ -15,16 +15,16 @@ abstract class Strategy implements StrategyContract
         $this->basePath = $basePath;
     }
 
-    protected function getAbsolutePath($path)
+    protected function getAbsolutePath($path): string
     {
-        if (strpos($path, DIRECTORY_SEPARATOR) === 0 or empty($this->basePath)) {
+        if (str_starts_with($path, DIRECTORY_SEPARATOR) || empty($this->basePath)) {
             return $path;
         }
 
         return $this->basePath . DIRECTORY_SEPARATOR . $path;
     }
 
-    protected function normalisePath($path)
+    protected function normalisePath($path): string
     {
         return rtrim($path, '/');
     }

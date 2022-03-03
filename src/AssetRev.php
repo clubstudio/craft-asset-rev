@@ -9,7 +9,7 @@ use club\assetrev\services\AssetRev as Service;
 
 class AssetRev extends Plugin
 {
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -20,7 +20,7 @@ class AssetRev extends Plugin
         Craft::$app->view->registerTwigExtension(new AssetRevTwigExtension);
     }
 
-    protected function createSettingsModel()
+    protected function createSettingsModel(): \craft\base\Model
     {
         return new Settings();
     }
