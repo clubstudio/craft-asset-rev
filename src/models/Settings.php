@@ -6,13 +6,16 @@ use craft\base\Model;
 
 class Settings extends Model
 {
-    public $strategies = [];
-    public $pipeline = 'manifest|querystring|passthrough';
-    public $manifestPath = 'resources/assets/assets.json';
-    public $assetsBasePath = '';
-    public $assetUrlPrefix = null;
+    public array $strategies = [];
+    public string $pipeline = 'manifest|querystring|passthrough';
+    public string $manifestPath = 'resources/assets/assets.json';
+    public string $assetsBasePath = '';
+    public ?string $assetUrlPrefix = null;
 
-    public function init()
+    /**
+     * @inheritdoc
+     */
+    public function init(): void
     {
         parent::init();
 
@@ -25,7 +28,10 @@ class Settings extends Model
         ];
     }
 
-    public function rules()
+    /**
+     * @inheritdoc
+     */
+    public function rules(): array
     {
         return [
             ['strategies', 'required'],

@@ -4,12 +4,12 @@ use club\assetrev\models\Settings;
 use club\assetrev\exceptions\ContinueException;
 use club\assetrev\utilities\strategies\QueryStringStrategy;
 
-class QueryStringStrategyTest extends PHPUnit_Framework_TestCase
+class QueryStringStrategyTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
      */
-    public function it_throws_a_continue_exception_if_the_asset_file_cannot_be_found()
+    public function it_throws_a_continue_exception_if_the_asset_file_cannot_be_found(): void
     {
         $this->expectException(ContinueException::class);
 
@@ -22,7 +22,7 @@ class QueryStringStrategyTest extends PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_appends_filemtime_as_a_query_string()
+    public function it_appends_filemtime_as_a_query_string(): void
     {
         $asset = 'tests/files/asset.css';
         $assetPath = stream_resolve_include_path($asset);
@@ -37,7 +37,7 @@ class QueryStringStrategyTest extends PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_finds_asset_files_when_the_asset_base_path_is_relative()
+    public function it_finds_asset_files_when_the_asset_base_path_is_relative(): void
     {
         $asset = 'tests/files/nested/nested-asset.css';
         $assetPath = stream_resolve_include_path($asset);
@@ -52,7 +52,7 @@ class QueryStringStrategyTest extends PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_finds_asset_files_when_the_asset_base_path_is_absolute()
+    public function it_finds_asset_files_when_the_asset_base_path_is_absolute(): void
     {
         $asset = 'tests/files/nested/nested-asset.css';
         $assetPath = stream_resolve_include_path($asset);

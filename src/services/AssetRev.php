@@ -3,21 +3,23 @@
 namespace club\assetrev\services;
 
 use Yii;
+use craft\helpers\App;
 use craft\base\Model;
 use craft\base\Component;
 use club\assetrev\AssetRev as Plugin;
 use club\assetrev\utilities\FilenameRev;
+use yii\base\InvalidArgumentException;
 
 class AssetRev extends Component
 {
     /**
-     * Get the filename of a asset.
+     * Get the filename of an asset.
      *
      * @param $file
      * @throws InvalidArgumentException
      * @return string
      */
-    public function getAssetFilename($file)
+    public function getAssetFilename($file): string
     {
         $settings = $this->parseAliases(Plugin::getInstance()->settings);
 
@@ -33,7 +35,7 @@ class AssetRev extends Component
      * @param  Model  $settings
      * @return Model
      */
-    protected function parseAliases(Model $settings)
+    protected function parseAliases(Model $settings): Model
     {
         $aliasables = ['manifestPath', 'assetsBasePath', 'assetUrlPrefix'];
 
@@ -42,18 +44,5 @@ class AssetRev extends Component
         }
 
         return $settings;
-    }
-
-    /**
-     * Build an asset's URL.
-     *
-     * @param  string $basePath Base path to assets as defined in the plugin settings
-     * @param  string $file     Asset filename
-     *
-     * @return string           Path to the asset - environment variables having been replaced with their values.
-     */
-    protected function parseEnvironmentString($string)
-    {
-        return craft()->config->parseEnvironmentString($string);
     }
 }

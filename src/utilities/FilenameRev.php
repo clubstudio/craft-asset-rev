@@ -4,14 +4,13 @@ namespace club\assetrev\utilities;
 
 use Craft;
 use ErrorException;
-use club\assetrev\AssetRev;
 use InvalidArgumentException;
 use club\assetrev\exceptions\ContinueException;
 
 class FilenameRev
 {
-    protected $config;
-    protected $basePath;
+    protected mixed $config;
+    protected string $basePath;
 
     public function __construct($config)
     {

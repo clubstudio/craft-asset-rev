@@ -1,15 +1,16 @@
 {
   "name": "clubstudioltd/craft-asset-rev",
-  "description": "A plugin to aid cache-busting in Craft 3",
-  "version": "6.0.2",
+  "description": "A plugin to aid cache-busting in Craft 4",
+  "version": "7.0.0",
   "type": "craft-plugin",
   "license": "MIT",
   "require": {
-    "craftcms/cms": "^3.0.0-beta.29"
+    "php": "^8.0.2",
+    "craftcms/cms": "^4.0.0-alpha.1"
   },
   "require-dev": {
       "mockery/mockery": "0.9.*",
-      "phpunit/phpunit": "~5.0",
+      "phpunit/phpunit": "^9.0",
       "phpunit/php-token-stream": "<2"
   },
   "autoload": {
@@ -28,5 +29,11 @@
     "developer": "Club Studio Ltd",
     "developerUrl": "https://clubstudio.co.uk",
     "class": "club\\assetrev\\AssetRev"
+  },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true
+    }
   }
 }
