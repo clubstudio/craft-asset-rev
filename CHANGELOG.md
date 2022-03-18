@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 7.0.0 - 2022-03-18
+### Added
+- Craft CMS 4 compatibility (Thanks, Matt Stein!)
+
 ## 6.0.2 - 2018-11-20
 ### Changed
 - Updated plugin icon
