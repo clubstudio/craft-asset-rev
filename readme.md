@@ -1,7 +1,7 @@
 <img src="./src/icon.svg" width="64">
 
 # CraftCMS Asset Rev / Cache Busting (Craft 3.x)
-[![Build Status](https://travis-ci.org/clubstudioltd/craft-asset-rev.svg?branch=v6)](https://travis-ci.org/clubstudioltd/craft-asset-rev)
+[![tests](https://github.com/clubstudioltd/craft-asset-rev/actions/workflows/tests.yml/badge.svg)](https://github.com/clubstudioltd/craft-asset-rev/actions/workflows/tests.yml)
 [![Latest Stable Version](https://poser.pugx.org/clubstudioltd/craft-asset-rev/v/stable)](https://packagist.org/packages/clubstudioltd/craft-asset-rev)
 [![Total Downloads](https://poser.pugx.org/clubstudioltd/craft-asset-rev/downloads)](https://packagist.org/packages/clubstudioltd/craft-asset-rev)
 [![Latest Unstable Version](https://poser.pugx.org/clubstudioltd/craft-asset-rev/v/unstable)](https://packagist.org/packages/clubstudioltd/craft-asset-rev)
@@ -39,7 +39,7 @@ then `rev('css/main.css')` will expand to `css/main.a9961d38.css`.
 Append a query string to your file, based on the time it was last modified. For example: `rev('css/main.css')` will expand to something like `css/main.css?1473534554`.
 
 ### Passthrough
-Returns the original filename, without modification. This is useful if all other cache-busting strategies fail. 
+Returns the original filename, without modification. This is useful if all other cache-busting strategies fail.
 
 ## Strategy Pipeline
 Pipelines allow you to attempt multiple cache-busting strategies in sequence. If one strategy fails, the plugin can proceed to try and cache-bust the asset filename using the next strategy in the pipeline.
