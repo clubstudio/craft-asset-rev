@@ -24,7 +24,7 @@ This plugin allows you to configure multiple cache-busting strategies for your a
 
 If the contents of your manifest file are...
 
-```
+```json
 {
     "css/main.css": "css/main.a9961d38.css",
     "js/main.js": "js/main.786087f5.js"
@@ -78,7 +78,7 @@ If you want to set your own values you should create a `assetrev.php` file in yo
 **Note:** You can use Yii aliases in your configuration values.
 
 ## An Example Config File
-```
+```php
 <?php
 return array(
     '*' => array(
@@ -100,7 +100,7 @@ return array(
 ## Usage
 Once activated and configured you can use the `rev()` function in your templates.
 
-```
+```html
 <link rel="stylesheet" href="{{ rev('css/main.css') }}">
 ```
 
@@ -108,7 +108,7 @@ Once activated and configured you can use the `rev()` function in your templates
 Need to provide your own cache-busting logic? Create your own Strategy class or simply use a Closure.
 
 ### Example Strategy Class
-```
+```php
 <?php
 
 namespace your\namespace;
@@ -129,7 +129,7 @@ class QueryStringStrategy extends Strategy
 ### Example Closure
 Your method will have access to the asset filename and the plugin configuration array.
 
-```
+```php
 function ($filename, $config) {
     // add your logic to manipulate $filename here...
     return $filename;
