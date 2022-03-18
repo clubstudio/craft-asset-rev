@@ -1,6 +1,6 @@
 <img src="./src/icon.svg" width="64">
 
-# CraftCMS Asset Rev / Cache Busting (Craft 3.x)
+# CraftCMS Asset Rev / Cache Busting
 [![tests](https://github.com/clubstudioltd/craft-asset-rev/actions/workflows/tests.yml/badge.svg)](https://github.com/clubstudioltd/craft-asset-rev/actions/workflows/tests.yml)
 [![Latest Stable Version](https://poser.pugx.org/clubstudioltd/craft-asset-rev/v/stable)](https://packagist.org/packages/clubstudioltd/craft-asset-rev)
 [![Total Downloads](https://poser.pugx.org/clubstudioltd/craft-asset-rev/downloads)](https://packagist.org/packages/clubstudioltd/craft-asset-rev)
