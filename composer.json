@@ -5,7 +5,7 @@
   "type": "craft-plugin",
   "license": "MIT",
   "require": {
-    "php": "^8.0.2",
+    "php": "^8.2",
     "craftcms/cms": "^5.0"
   },
   "require-dev": {
