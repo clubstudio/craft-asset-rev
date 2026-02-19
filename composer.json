@@ -10,7 +10,7 @@
   },
   "require-dev": {
       "mockery/mockery": "0.9.*",
-      "phpunit/phpunit": "^9.0",
+      "phpunit/phpunit": "^9.6.33",
       "phpunit/php-token-stream": "<2"
   },
   "autoload": {
